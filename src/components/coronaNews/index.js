@@ -21,7 +21,7 @@ const CoronaNews = () => {
   return (
     <div>
       <h2>data corona</h2>
-      {isLoading ? <p>loading</p> : <p>data</p>}
+      {isLoading ? <p>loading</p> : <p>Isi Berita</p>}
     </div>
   );
 };
