@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import app from '../../services/firebase';
 import 'firebase/database';
+import './style.css';
+
+let activity = Object;
 
 const CoronaNews = () => {
   const [news, setNews] = useState([]);
@@ -16,12 +19,40 @@ const CoronaNews = () => {
     });
   }, []);
 
-  console.log(news);
+  // console.log(news);
 
   return (
     <div>
       <h2>data corona</h2>
-      {isLoading ? <p>loading</p> : <p>Isi Berita</p>}
+      {isLoading ? (
+        <p>loading</p>
+      ) : (
+        news.map((data, index) => {
+          activity = data.activity;
+          return (
+            <>
+              <div className="card" id="card" keys={index}>
+                <h1 className="experience-title">{data.date}</h1>
+                {activity.map((dataChild, indexChild) => {
+                  return (
+                    <>
+                      <div keys={indexChild}>
+                        <h3 className="experience-description">
+                          {' '}
+                          {dataChild.title}
+                        </h3>
+                        <a className="experience-url" href={dataChild.url}>
+                          {dataChild.url}
+                        </a>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            </>
+          );
+        })
+      )}
     </div>
   );
 };
