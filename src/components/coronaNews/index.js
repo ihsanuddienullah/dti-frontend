@@ -35,7 +35,6 @@ const CoronaNews = () => {
           return (
             <>
               <Card className="text-center" keys={index}>
-                {/* <h1 className="experience-title">{data.date}</h1> */}
                 <Card.Header>
                   Berita Corona
                   {data.date}
@@ -46,7 +45,7 @@ const CoronaNews = () => {
                       <Card.Body keys={indexNews}>
                         <Card.Title>{dataNews.title}</Card.Title>
                         <Card.Text>{dataNews.desc}</Card.Text>
-                        <a className="experience-url" href={dataNews.url}>
+                        <a href={dataNews.url}>
                           <Button variant="primary">Baca Berita</Button>
                         </a>
                       </Card.Body>
