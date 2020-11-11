@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { CircleToBlockLoading } from 'react-loadingg';
+import { Card, Button } from 'react-bootstrap';
 import app from '../../services/firebase';
 import 'firebase/database';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 
 let activity = Object;
@@ -20,7 +22,7 @@ const CoronaNews = () => {
     });
   }, []);
 
-  // console.log(news);
+  console.log(news);
 
   return (
     <div>
@@ -32,24 +34,30 @@ const CoronaNews = () => {
           activity = data.activity;
           return (
             <>
-              <div className="card" id="card" keys={index}>
-                <h1 className="experience-title">{data.date}</h1>
-                {activity.map((dataChild, indexChild) => {
+              <Card className="text-center" keys={index}>
+                {/* <h1 className="experience-title">{data.date}</h1> */}
+                <Card.Header>
+                  Berita Corona
+                  {data.date}
+                </Card.Header>
+                {activity.map((dataNews, indexNews) => {
                   return (
                     <>
-                      <div keys={indexChild}>
-                        <h3 className="experience-description">
-                          {' '}
-                          {dataChild.title}
-                        </h3>
-                        <a className="experience-url" href={dataChild.url}>
-                          {dataChild.url}
+                      <Card.Body keys={indexNews}>
+                        <Card.Title>{dataNews.title}</Card.Title>
+                        <Card.Text>{dataNews.desc}</Card.Text>
+                        <a className="experience-url" href={dataNews.url}>
+                          <Button variant="primary">Baca Berita</Button>
                         </a>
-                      </div>
+                      </Card.Body>
                     </>
                   );
                 })}
-              </div>
+                <Card.Footer className="text-muted">
+                  Corona Indonesia
+                </Card.Footer>
+              </Card>
+              <br />
             </>
           );
         })
