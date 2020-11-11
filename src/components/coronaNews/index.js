@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { CircleToBlockLoading } from 'react-loadingg';
 import app from '../../services/firebase';
 import 'firebase/database';
 import './style.css';
@@ -25,7 +26,7 @@ const CoronaNews = () => {
     <div>
       <h2>data corona</h2>
       {isLoading ? (
-        <p>loading</p>
+        <CircleToBlockLoading />
       ) : (
         news.map((data, index) => {
           activity = data.activity;
