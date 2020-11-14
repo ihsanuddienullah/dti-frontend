@@ -6,7 +6,7 @@ import 'firebase/database';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 
-let activity = Object;
+let NewsAct = Object;
 
 const CoronaNews = () => {
   const [news, setNews] = useState([]);
@@ -31,22 +31,24 @@ const CoronaNews = () => {
         <CircleToBlockLoading />
       ) : (
         news.map((data, index) => {
-          activity = data.activity;
+          NewsAct = data.activity;
           return (
             <>
               <Card className="text-center" keys={index}>
                 <Card.Header>
                   Berita Corona
-                  {data.date}
+                  {/* {data.date} */}
                 </Card.Header>
-                {activity.map((dataNews, indexNews) => {
+                {NewsAct.map((dataNews, indexNews) => {
                   return (
                     <>
                       <Card.Body keys={indexNews}>
                         <Card.Title>{dataNews.title}</Card.Title>
                         <Card.Text>{dataNews.desc}</Card.Text>
                         <a href={dataNews.url}>
-                          <Button variant="primary">Baca Berita</Button>
+                          <Button variant="primary">
+                            Baca berita lengkap ...
+                          </Button>
                         </a>
                       </Card.Body>
                     </>
